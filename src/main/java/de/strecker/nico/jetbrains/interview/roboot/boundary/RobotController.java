@@ -21,4 +21,14 @@ public class RobotController {
     public ResponseEntity<List<LocationDto>> locations(@RequestBody List<MoveDto> moves){
         return ResponseEntity.ok(robotService.getLocationsForMoves(moves));
     }
+
+    @PostMapping("/moves")
+    public ResponseEntity<List<MoveDto>> moves(@RequestBody List<LocationDto> locations){
+        return ResponseEntity.ok(robotService.getMovesForLocations(locations));
+    }
+
+    @PostMapping("/moves-shortest-path")
+    public ResponseEntity<List<MoveDto>> movesShortestPath(@RequestBody List<LocationDto> locations){
+        return ResponseEntity.ok(robotService.movesShortestPath(locations));
+    }
 }
