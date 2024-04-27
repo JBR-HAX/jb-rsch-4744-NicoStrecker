@@ -36,3 +36,16 @@ Content-Type: application/json
     "steps": 2
   }
 ]
+
+
+###
+POST http://localhost:8080/moves-shortest-path
+Content-Type: application/json
+
+[
+  {"x": 0, "y": 0},
+  {"x": 4, "y": 0},
+  {"x": 0, "y": 0},
+  {"x": 0, "y": 2},
+  {"x": 0, "y": 4}
+]

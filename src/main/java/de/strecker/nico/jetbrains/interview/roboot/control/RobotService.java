@@ -138,26 +138,23 @@ public class RobotService {
             int dx = nearestLocation.getX() - currentLocation.getX();
             int dy = nearestLocation.getY() - currentLocation.getY();
 
-            Direction direction;
-            int steps;
-
-            if(dx > 0) {
-                direction = Direction.EAST;
-                steps = dx;
-            } else if(dx < 0) {
-                direction = Direction.WEST;
-                steps = -dx;
-            } else if(dy > 0) {
-                direction = Direction.NORTH;
-                steps = dy;
-            } else {
-                direction = Direction.SOUTH;
-                steps = -dy;
+            // Calculate moves in x direction
+            if (dx != 0) {
+                Direction direction = dx > 0 ? Direction.EAST : Direction.WEST;
+                int steps = Math.abs(dx);
+                shortestPath.add(new MoveDto(direction, steps));
             }
 
-            shortestPath.add(new MoveDto(direction, steps));
+            // Calculate moves in y direction
+            if (dy != 0) {
+                Direction direction = dy > 0 ? Direction.NORTH : Direction.SOUTH;
+                int steps = Math.abs(dy);
+                shortestPath.add(new MoveDto(direction, steps));
+            }
+
             currentLocation = nearestLocation;
         }
+
 
         return shortestPath;
     }
